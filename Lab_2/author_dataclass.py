@@ -27,6 +27,7 @@ def main():
     author.publish("Cheese")
     author.publish("Crackers")
     author.publish("Crackers")
+    author.publish('The Art of Charcuterie')
 
     #  Call the __str__ method to print the author and their books
     print(author)
