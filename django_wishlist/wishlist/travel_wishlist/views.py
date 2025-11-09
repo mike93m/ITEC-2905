@@ -27,6 +27,6 @@ def place_was_visited(request, place_pk):
         place.visited = True
         place.save()
 
-        return redirect('place_list')
+    return redirect('place_list')
 
     

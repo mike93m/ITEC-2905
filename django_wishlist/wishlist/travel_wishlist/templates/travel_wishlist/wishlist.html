@@ -12,7 +12,7 @@
     <div>
         {{place.name}} 
 
-        <form method="POST" action="{% 'place_was_visited' place.pk %}">
+        <form method="POST" action="{% url 'place_was_visited' place.pk %}">
             {% csrf_token %}
             <button type="submit">Visited!</button>
         </form>
