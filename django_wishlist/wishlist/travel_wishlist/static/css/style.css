@@ -1,0 +1,21 @@
+span.place_name {
+    display: inline-block;
+    width: 70%;
+}
+
+form.visited_form {
+    display: inline;
+}
+
+div.wishlist-place {
+    margin: 20px;
+}
+
+label {
+    display: inline-block;
+    padding-right: 8px;
+}
+
+a.nav-link {
+    padding-right: 10px;
+}
