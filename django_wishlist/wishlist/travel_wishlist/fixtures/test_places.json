@@ -3,7 +3,7 @@
     "model": "travel_wishlist.place",
     "pk": 1,
     "fields": {
-      "name": "Tokyo",
+      "name": "China",
       "visited": "False"
     }
   },
