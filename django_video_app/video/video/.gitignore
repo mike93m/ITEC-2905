@@ -1,7 +1,0 @@
-venv
-django_video_venv
-__pycache__
-*.pyc
-.idea
-.vscode
-db.sqlite3
