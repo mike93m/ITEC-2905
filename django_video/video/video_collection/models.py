@@ -2,11 +2,11 @@ from django.db import models
 
 # Create your models here.
 
-class Video(models.model):
+class Video(models.Model):
     name = models.CharField(max_length=200)
     url = models.CharField(max_length=400)
-    notes = models.Charfield(blank=True, null=True)
+    notes = models.CharField(blank=True, null=True)
 
     def __str__(self):
-    # String displayed in the admin console or when printing a Video object
+    # String displayed in the admin console or when printing a Video object, character limit enforced on notes
         return f'ID: {self.pk}, Name: {self.name}, URL: {self.url}, Notes: {self.notes[:200]}'
