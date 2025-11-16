@@ -1,6 +1,5 @@
 venv
-django_video_venv
-__pycache__
+__pycahe__
 *.pyc
 .idea
 .vscode
