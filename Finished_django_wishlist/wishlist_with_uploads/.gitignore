@@ -4,3 +4,4 @@ db.sqlite3
 venv
 .vscode/
 wishlist_bucket_key.json
+app.yaml
