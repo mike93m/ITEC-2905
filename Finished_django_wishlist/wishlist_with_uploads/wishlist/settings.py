@@ -9,8 +9,10 @@ https://docs.djangoproject.com/en/2.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.0/ref/settings/
 """
-
+from pathlib import Path
 import os
+from google.oauth2 import service_account
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -127,14 +129,28 @@ USE_TZ = True
 # Specify a location to copy static files to when running python manage.py collectstatic
 STATIC_ROOT = os.path.join(BASE_DIR, 'www', 'static')
 
-STATIC_URL = '/static/'
-
-# Media URL, for user-created media - becomes part of URL when images are displayed
-MEDIA_URL = '/media/'
-
 # Where in the file system to save user-uploaded files
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-GS_STATIC_FILE_BUCKET = 'wishlist-479103.appspot.com'
+if not os.getenv('GAE_INSTANCE'): # Local development settings
+    STATIC_URL = '/static/'
+    MEDIA_URL = '/media/'
 
-STATIC_URL = f'https://storage.cloud.google.com/{GS_STATIC_FILE_BUCKET}/static/'
+else: # Production settings
+    # Static files are stored in this bucket 
+    GS_STATIC_FILE_BUCKET = 'wishlist-479103.appspot.com'
+    STATIC_URL = f'https://storage.cloud.google.com/{GS_STATIC_FILE_BUCKET}/static/'
+
+    # Media (user-uploaded) files are stored in this bucket
+    GS_BUCKET_NAME = 'place-images-user'
+    MEDIA_URL = f'https://storage.cloud.google.com/{GS_BUCKET_NAME}/media/'
+    GS_CREDENTIALS = service_account.Credentials.from_service_account_file('wishlist_bucket_key.json')
+
+STORAGES = {
+    'staticfiles': {
+        'BACKEND': 'django.contrib.staticfiles.storage.StaticFilesStorage',
+    },
+    'default': {
+        'BACKEND': 'storages.backends.gcloud.GoogleCloudStorage',
+    }
+}
