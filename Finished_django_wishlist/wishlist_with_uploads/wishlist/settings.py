@@ -81,7 +81,7 @@ DATABASES = {
         'USER': 'traveler',
         'PASSWORD': os.getenv('TRAVELER_PW'),
         'HOST': '/cloudsql/wishlist-479103:us-central1:wishlist-mysql-instance',
-        'PORT': '3306'
+        'PORT': '3307'
     }
 }
 
